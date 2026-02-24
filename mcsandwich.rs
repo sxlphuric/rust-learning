@@ -2,6 +2,12 @@ fn main() {
     use std::collections::HashMap;
     let restaurant_name = "McSandwich";
 
+    struct FoodItem {
+        name: String,
+        price: i32,
+        description: String,
+    }
+
     let menu = [
         "hamburger",
         "fries",
@@ -12,49 +18,53 @@ fn main() {
     let mut iteminfo = HashMap::new();
     iteminfo.insert(
         "hamburger",
-        (
-            "Basic Hamburger",
-            1,
-            "Your basic hamburger. Always tastes like cardboard!",
-        ),
+        FoodItem {
+            name: String::from("Basic Hamburger"),
+            price: 1,
+            description: "Your basic hamburger. Always tastes like cardboard!".to_string(),
+        },
     );
     iteminfo.insert(
         "fries",
-        (
-            "French Fries",
-            3,
-            "Delicious fries guaranteed to keep you wanting more.",
-        ),
+        FoodItem {
+            name: String::from("French Fries"),
+            price: 3,
+            description: "Delicious fries guaranteed to keep you wanting more.".to_string(),
+        },
     );
     iteminfo.insert(
         "milkshake",
-        ("Milkshake", 4, "A delicious and creamy milk-based drink!"),
+        FoodItem {
+            name: String::from("Milkshake"),
+            price: 4,
+            description: "A delicious and creamy milk-based drink!".to_string(),
+        },
     );
     iteminfo.insert(
         "chickenstrips",
-        (
-            "Chicken Strips",
-            3,
-            "Yummy chicken strips. Approved by chicken enjoyers!",
-        ),
+        FoodItem {
+            name: String::from("Chicken Strips"),
+            price: 3,
+            description: "Yummy chicken strips. Approved by chicken enjoyers!".to_string(),
+        },
     );
     iteminfo.insert(
         "chickensandwich",
-        (
-            "Chicken Sandwich",
-            1,
-            "A basic sandwich with juicy pieces of chicken.",
-        ),
+        FoodItem {
+            name: String::from("Chicken Sandwich"),
+            price: 1,
+            description: "A basic sandwich with juicy pieces of chicken.".to_string(),
+        },
     );
 
     println!("Welcome to {}! Here is our menu.", restaurant_name);
     println!("\n---------------------------------------\n");
     for i in menu {
         println!(
-            "{} - {}$",
-            iteminfo.get(i).unwrap().0,
-            iteminfo.get(i).unwrap().1
+            "| {} - {}$",
+            iteminfo.get(i).unwrap().name,
+            iteminfo.get(i).unwrap().price
         );
-        println!("{}\n", iteminfo.get(i).unwrap().2)
+        println!("| {}\n", iteminfo.get(i).unwrap().description)
     }
 }
